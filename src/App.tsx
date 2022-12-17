@@ -4,7 +4,7 @@ import grid from "./components/assets/grid.png";
 import backArrow from "./components/assets/backArrow.png";
 import arrow from "./components/assets/arrow.png";
 import {Navbar} from "./components/navbar/Navbar";
-import {Works} from "./components/worksDescription/Works";
+import {WorksList} from "./components/worksDescription/WorksList";
 
 const App = () => {
     const projectNames = [
@@ -60,7 +60,7 @@ const App = () => {
                 />
             </nav>
             <div className={s.main}>
-                   <Works />
+                   <WorksList />
             </div>
         </div>
     );
