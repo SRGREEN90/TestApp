@@ -1,0 +1,84 @@
+$primary: #27272A;
+$secondary: #202124;
+
+.size {
+  display: grid;
+
+  grid-template-areas:
+          "header header"
+          "projectTitle worksTitle"
+          "nav main";
+  grid-template-rows: 44px 44px 1fr;
+  grid-template-columns: 234px 1fr;
+
+  height: 1080px;
+  background-color: $primary;
+  border: 1px solid #414144;
+
+  .header {
+    grid-area: header;
+    background-color: $primary;
+    border-bottom: 1px solid #414144;
+
+    .icons {
+      display: flex;
+      flex-direction: row;
+      justify-content: flex-start;
+      align-items: center;
+      padding-left: 20px;
+    }
+  }
+
+  .project {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    border-right: 1px solid #414144;
+    padding-left: 20px;
+
+    .projectTitle {
+      grid-area: projectTitle;
+      font-size: 16px;
+      color: #A1A1AA;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: self-start;
+    }
+
+    .arrow {
+      padding-right: 10px;
+      display: flex;
+      align-items: center;
+    }
+  }
+
+  .worksTitle {
+    grid-area: worksTitle;
+    color: #FFFFFF;
+    display: flex;
+    text-align: left;
+    align-items: center;
+    padding-left: 20px;
+  }
+
+  .nav {
+    grid-area: nav;
+    background-color: $primary;
+    border: 1px solid #414144;
+  }
+
+  .main {
+    grid-area: main;
+    background-color: $secondary;
+    border-top: 1px solid #414144;
+  }
+}
+
+
+
+
+
+
+
+
