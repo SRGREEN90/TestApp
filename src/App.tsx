@@ -32,15 +32,15 @@ export default function App() {
                 <div className={styles.icons}>
                     <img style={{width: '16px', height: '16px'}} src={grid} alt=""/>
                     <img style={{width: '18px', height: '15px', paddingLeft: '20px'}} src={backArrow} alt=""/>
-                    <p style={{paddingLeft: '20px', color: '#ffffff'}}>Просмотр</p>
-                    <p style={{paddingLeft: '20px', color: '#ffffff'}}>Управление</p>
+                    <p>Просмотр</p>
+                    <p>Управление</p>
                 </div>
             </header>
 
             <header className={styles.project}>
                 <div className={styles.projectTitle}>
                     <div>Название проекта</div>
-                    <div style={{fontSize: '12px'}}>
+                    <div style={{fontSize: '10px'}}>
                         Аббревиатура
                     </div>
                 </div>
@@ -59,8 +59,8 @@ export default function App() {
                     name={projectNames}
                 />
             </nav>
-            <div className={styles.main}>
-                   <WorksTable />
+            <div className={styles.table}>
+                <WorksTable/>
             </div>
         </div>
     );

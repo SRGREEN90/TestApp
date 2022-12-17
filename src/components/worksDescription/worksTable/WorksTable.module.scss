@@ -1,3 +1,17 @@
-.table{
-  color: yellow;
+
+.table {
+  position: relative;
+  max-width: 1920px;
+  background: #202124;
+  color: #A1A1AA;
+  padding-left: 20px;
+  height: 44px;
+  padding-top: 20px;
+
+  .item {
+    display: grid;
+    grid-template-columns: 1.5fr 4.5fr 1.5fr 1.5fr 1.5fr 1.5fr;
+    grid-gap: 0 30px;
+    height: 44px;
+  }
 }
