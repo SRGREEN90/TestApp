@@ -1,20 +1,21 @@
 import React from "react";
-import s from "./Navbar.module.scss"
+import styles from "./Navbar.module.scss"
 import icon from "../assets/nameIcon.png"
 
 type NameProjectPropsType = {
     name: string[]
 }
 
-export const Navbar: React.FC<NameProjectPropsType> = (props) => {
-    return <div className={s.names}>
+export default function Navbar(props: NameProjectPropsType){
+    return <div className={styles.names}>
         {props.name.map(n =>
-            <div className={s.namesStyles}>
-              <div className={s.img}>
+            <div className={styles.namesStyles}>
+              <div className={styles.img}>
                   <img style={{width: '16px', height: '16px'}} src={icon} alt=""/>
               </div>
-                <div className={s.title}>{n}</div>
+                <div className={styles.title}>{n}</div>
             </div>
         )}
     </div>
 }
+

@@ -1,12 +1,12 @@
 import React from 'react';
-import s from "./App.module.scss";
+import styles from "./App.module.scss";
 import grid from "./components/assets/grid.png";
 import backArrow from "./components/assets/backArrow.png";
 import arrow from "./components/assets/arrow.png";
-import {Navbar} from "./components/navbar/Navbar";
-import {WorksList} from "./components/worksDescription/WorksList";
+import Navbar from "./components/navbar/Navbar";
+import WorksTable from "./components/worksDescription/worksTable/WorksTable";
 
-const App = () => {
+export default function App() {
     const projectNames = [
         "По проекту",
         "Объекты",
@@ -26,10 +26,10 @@ const App = () => {
     ]
 
     return (
-        <div className={s.size}>
+        <div className={styles.size}>
 
-            <header className={s.header}>
-                <div className={s.icons}>
+            <header className={styles.header}>
+                <div className={styles.icons}>
                     <img style={{width: '16px', height: '16px'}} src={grid} alt=""/>
                     <img style={{width: '18px', height: '15px', paddingLeft: '20px'}} src={backArrow} alt=""/>
                     <p style={{paddingLeft: '20px', color: '#ffffff'}}>Просмотр</p>
@@ -37,33 +37,31 @@ const App = () => {
                 </div>
             </header>
 
-            <header className={s.project}>
-                <div className={s.projectTitle}>
+            <header className={styles.project}>
+                <div className={styles.projectTitle}>
                     <div>Название проекта</div>
                     <div style={{fontSize: '12px'}}>
                         Аббревиатура
                     </div>
                 </div>
 
-                <div className={s.arrow}>
+                <div className={styles.arrow}>
                     <img style={{width: '12px', height: '7.41px'}} src={arrow} alt=""/>
                 </div>
             </header>
 
-            <header className={s.worksTitle}>
+            <header className={styles.worksTitle}>
                 Строительно-монтажные работы
             </header>
 
-            <nav className={s.nav}>
+            <nav className={styles.nav}>
                 <Navbar
                     name={projectNames}
                 />
             </nav>
-            <div className={s.main}>
-                   <WorksList />
+            <div className={styles.main}>
+                   <WorksTable />
             </div>
         </div>
     );
 }
-
-export default App;
