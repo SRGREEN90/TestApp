@@ -4,6 +4,8 @@ import icon from "../assets/nameIcon.png"
 import {AppRootStateType, useAppDispatch} from "../../main/bll/store";
 import {useDispatch} from "react-redux";
 import {ThunkDispatch} from "@reduxjs/toolkit";
+import {eID} from "../../App";
+import {createRowInEntityTC} from "../../main/bll/items-reducer";
 
 type NameProjectPropsType = {
     projectNames: string[]
@@ -11,28 +13,27 @@ type NameProjectPropsType = {
 }
 
 export default function Navbar({projectNames, setNameWorks}: NameProjectPropsType) {
-  //  const dispatch = useDispatch<ThunkDispatch<AppRootStateType, unknown, any>>();
+    const dispatch = useDispatch<ThunkDispatch<AppRootStateType, unknown, any>>();
 
     const [filter, setFilter] = useState(false)
 
-    // dispatch(createRowInEntityTC({id: eID, model: {
-    //         equipmentCosts: 10,
-    //         estimatedProfit: 10,
-    //         machineOperatorSalary: 10,
-    //         mainCosts: 10,
-    //         materials: 10,
-    //         mimExploitation: 10,
-    //         overheads: 10,
-    //         parentId: null,
-    //         rowName: "string",
-    //         salary: 30,
-    //         supportCosts: 40
-    //     }}))
+    useEffect(()=>{
+        dispatch(createRowInEntityTC({id: eID, model: {
+                equipmentCosts: 10,
+                estimatedProfit: 10,
+                machineOperatorSalary: 10,
+                mainCosts: 10,
+                materials: 10,
+                mimExploitation: 10,
+                overheads: 10,
+                parentId: null,
+                rowName: "string",
+                salary: 30,
+                supportCosts: 40
+            }}))
+    },[dispatch])
 
-    // function setClassName(name: string) {
-    //     setManeClassName(styles.active)
-    //     return maneClassName
-    // }
+
 
    const mainClassName = filter ? styles.active : styles.title
 

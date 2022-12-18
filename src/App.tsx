@@ -33,7 +33,7 @@ export default function App() {
     ]
     const [nameWorks, setNameWorks] = useState('')
 
-   // const state = useSelector<AppRootStateType>(state => state.items)
+    //const state = useSelector<AppRootStateType>(state => state.items)
 
     useEffect(() => {
         dispatch(getTreeRowsTC(eID))
