@@ -1,7 +1,14 @@
 import React from 'react';
+import { useSelector } from 'react-redux/es/hooks/useSelector';
+import Table from './table/Table';
 import styles from "./WorksTable.module.scss"
+import {AppRootStateType} from "../../../main/bll/store";
+
 
 export default function WorksTable() {
+
+  //  const tableItems = useSelector<AppRootStateType, number[]>(state => state.items.eID)
+
     return (
         <div className={styles.table}>
             <div className={styles.item}>
@@ -24,30 +31,10 @@ export default function WorksTable() {
                     Сметная прибыль
                 </div>
             </div>
-            {/*{packs.length > 0*/}
-            {/*    ? packs.map(pack => <Pack key={pack._id} pack={pack}/>)*/}
+            {/*{tableItems.length > 0*/}
+            {/*    ? tableItems.map(items => <Table key={items.eID} items={items}/>)*/}
             {/*    : <div style={{padding: '16px 24px'}}>Ничего не найдено</div>}*/}
         </div>
 
     )
 }
-
-// <div className={styles.table}>
-//     <div className={`${styles.header} ${styles.item}`}>
-//         <div onClick={sortName} className={activeField === "name" ? `${styles.active} ${rotate}` : ""}>Name
-//         </div>
-//         <div onClick={sortCards}
-//              className={activeField === "cardsCount" ? `${styles.active} ${rotate}` : ""}>Cards
-//         </div>
-//         <div onClick={sortUpdate} className={activeField === "updated" ? `${styles.active} ${rotate}` : ""}>Last
-//             Updated
-//         </div>
-//         <div onClick={sortUserName}
-//              className={activeField === "user_name" ? `${styles.active} ${rotate}` : ""}>Created by
-//         </div>
-//         <div>Actions</div>
-//     </div>
-//     {packs.length > 0
-//         ? packs.map(pack => <Pack key={pack._id} pack={pack}/>)
-//         : <div style={{padding: '16px 24px'}}>Ничего не найдено</div>}
-// </div>

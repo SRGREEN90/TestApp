@@ -1,12 +1,19 @@
-import React from 'react';
+import React, {useEffect}from 'react';
 import styles from "./App.module.scss";
 import grid from "./components/assets/grid.png";
 import backArrow from "./components/assets/backArrow.png";
 import arrow from "./components/assets/arrow.png";
 import Navbar from "./components/navbar/Navbar";
 import WorksTable from "./components/worksDescription/worksTable/WorksTable";
+import { useDispatch } from 'react-redux/es/hooks/useDispatch';
+import {getTreeRowsTC} from "./main/bll/items-reducer";
+import {AsyncThunkAction, ThunkDispatch} from "@reduxjs/toolkit";
+import {AppRootStateType} from "./main/bll/store";
+import { useSelector } from 'react-redux/es/hooks/useSelector';
+
 
 export default function App() {
+    const dispatch = useDispatch<ThunkDispatch<AppRootStateType, unknown, any>>();
     const projectNames = [
         "По проекту",
         "Объекты",
@@ -24,6 +31,14 @@ export default function App() {
         "Поручения",
         "Контрагенты"
     ]
+    const eID = 31463
+    const state = useSelector<AppRootStateType>(state => state.items)
+
+    useEffect(() => {
+        dispatch(getTreeRowsTC(eID))
+    }, [dispatch])
+
+
 
     return (
         <div className={styles.size}>
@@ -46,7 +61,7 @@ export default function App() {
                 </div>
 
                 <div className={styles.arrow}>
-                    <img style={{width: '12px', height: '7.41px'}} src={arrow} alt=""/>
+                    <img src={arrow} alt="arrow"/>
                 </div>
             </header>
 
@@ -60,8 +75,9 @@ export default function App() {
                 />
             </nav>
             <div className={styles.table}>
-                <WorksTable/>
+                <WorksTable />
             </div>
         </div>
     );
 }
+

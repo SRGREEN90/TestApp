@@ -1,7 +1,10 @@
 import React from 'react'
 
 
-export default function (){
+type TablePropsType = {
+    items: number[]
+}
+export default function (props: TablePropsType){
     return (
         <div>
             Table
