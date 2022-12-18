@@ -1,24 +1,10 @@
 import {createAsyncThunk, createSlice, PayloadAction} from "@reduxjs/toolkit";
-import {getTreeRowsParamsType, tableItemsApi} from "../dal/api/api";
+import {createRowInEntityModelType, getTreeRowsParamsType, tableItemsApi} from "../dal/api/api";
 
 //export type RequestStatusType = 'idle' | 'loading' | 'succeeded' | 'failed'
 
 
-//export const createEntityTC = createAsyncThunk('itemsReducer/addItemsTC', async (_,{dispatch, rejectWithValue}) => {
-//     dispatch(setAppStatus({status: 'loading'}))
-//     try {
-//         const response = await tableItemsApi.createRowInEntity(eID)
-//         console.log(response.data)
-//         // if (response.status === 200) {
-//         //     dispatch(setAppStatus({status: 'succeeded'}))
-//         //     return response.
-//         // } else {
-//         //     return rejectWithValue(null)
-//         // }
-//     } catch (error) {
-//         return rejectWithValue(null)
-//     }
-// })
+
 
 export const getTreeRowsTC = createAsyncThunk('itemsReducer/addItemsTC', async (eID: number,{
     dispatch,
@@ -36,6 +22,22 @@ export const getTreeRowsTC = createAsyncThunk('itemsReducer/addItemsTC', async (
     }
 })
 
+export const createRowInEntity = createAsyncThunk('itemsReducer/addItemsTC', async (param:{id: number, model: createRowInEntityModelType},{dispatch, rejectWithValue}) => {
+    try {
+        const response = await tableItemsApi.createRowInEntity(param.id, param.model)
+        console.log(response.data)
+        // if (response.status === 200) {
+        //     return response.
+        // } else {
+        //     return rejectWithValue(null)
+        // }
+    } catch (error) {
+        return rejectWithValue(null)
+    }
+})
+
+
+
 const slice = createSlice({
     name: 'itemsReducer',
     initialState: [] as getTreeRowsParamsType[] ,
@@ -46,7 +48,7 @@ const slice = createSlice({
     },
     extraReducers: (builder) => {
         builder.addCase(getTreeRowsTC.fulfilled, (state, action) => {
-            state = action.payload
+          //  state = action.payload
         });
     }
 });
