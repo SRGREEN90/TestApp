@@ -10,7 +10,7 @@ import {getTreeRowsTC} from "./main/bll/items-reducer";
 import {AsyncThunkAction, ThunkDispatch} from "@reduxjs/toolkit";
 import {AppRootStateType} from "./main/bll/store";
 import { useSelector } from 'react-redux/es/hooks/useSelector';
-
+export const eID = 31463
 
 export default function App() {
     const dispatch = useDispatch<ThunkDispatch<AppRootStateType, unknown, any>>();
@@ -31,7 +31,7 @@ export default function App() {
         "Поручения",
         "Контрагенты"
     ]
-    const eID = 31463
+
     const state = useSelector<AppRootStateType>(state => state.items)
 
     useEffect(() => {

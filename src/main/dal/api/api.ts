@@ -12,7 +12,7 @@ export const tableItemsApi = {
     getTreeRows: (eID: number) => {
         return instance.get<getTreeRowsParamsType[], AxiosResponse<ResponseType>>(`v1/outlay-rows/entity/${eID}/row/list`);
     },
-    createRowInEntity: (eID: number, model: createRowInEntityModelType) => {
+    createRowInEntity: (eID: number, model: createRowInEntityModelType) => {       ///v1/outlay-rows/entity/{eID}/row/create
         return instance.post<createRowInEntityModelType, AxiosResponse<ResponseType>>(`v1/outlay-rows/entity/${eID}/row/create`, model);
     },
 }
@@ -35,5 +35,5 @@ export type getTreeRowsParamsType = {
      getTreeRowsParamsType,
      'child' | 'id' | 'total'
      > & {
-    parentId: number,
+    parentId: number | null,
 }

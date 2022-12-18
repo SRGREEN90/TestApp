@@ -9,7 +9,7 @@ import {getTreeRowsParamsType} from "../../../main/dal/api/api";
 export default function WorksTable() {
 
     const tableItems = useSelector<AppRootStateType, getTreeRowsParamsType[]>(state => state.items)
-
+    console.log(tableItems.length)
     return (
         <div className={styles.table}>
             <div className={styles.item}>
@@ -33,14 +33,14 @@ export default function WorksTable() {
                 </div>
             </div>
             {
-                tableItems.length > 0
+                tableItems.length
                     ? tableItems.map(items =>
                         <Table
                             key={items.id}
                             items={items}
                         />
                     )
-                    : <div style={{padding: '100px 250px'}}>Ничего не найдено</div>
+                    : <div style={{padding: '100px 250px'}}>Ничего не найдено!!!</div>
             }
         </div>
 
