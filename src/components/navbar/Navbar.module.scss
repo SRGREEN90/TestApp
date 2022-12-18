@@ -12,12 +12,20 @@
     align-items: center;
     justify-content: space-between;
     padding-top: 10px;
+  }
 
-    .title {
-      padding-left: 20px;
-    }
+  .title {
+    padding-left: 20px;
+    cursor: pointer;
+  }
+
+  .active {
+    padding-left: 20px;
+    cursor: pointer;
+    background-color: #A1A1AA;
   }
 }
+
 
 
 

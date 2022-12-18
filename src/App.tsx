@@ -1,4 +1,4 @@
-import React, {useEffect}from 'react';
+import React, {useEffect, useState} from 'react';
 import styles from "./App.module.scss";
 import grid from "./components/assets/grid.png";
 import backArrow from "./components/assets/backArrow.png";
@@ -7,7 +7,7 @@ import Navbar from "./components/navbar/Navbar";
 import WorksTable from "./components/worksDescription/worksTable/WorksTable";
 import { useDispatch } from 'react-redux/es/hooks/useDispatch';
 import {getTreeRowsTC} from "./main/bll/items-reducer";
-import {AsyncThunkAction, ThunkDispatch} from "@reduxjs/toolkit";
+import {ThunkDispatch} from "@reduxjs/toolkit";
 import {AppRootStateType} from "./main/bll/store";
 import { useSelector } from 'react-redux/es/hooks/useSelector';
 export const eID = 31463
@@ -31,8 +31,9 @@ export default function App() {
         "Поручения",
         "Контрагенты"
     ]
+    const [nameWorks, setNameWorks] = useState('')
 
-    const state = useSelector<AppRootStateType>(state => state.items)
+   // const state = useSelector<AppRootStateType>(state => state.items)
 
     useEffect(() => {
         dispatch(getTreeRowsTC(eID))
@@ -59,19 +60,19 @@ export default function App() {
                         Аббревиатура
                     </div>
                 </div>
-
                 <div className={styles.arrow}>
                     <img src={arrow} alt="arrow"/>
                 </div>
             </header>
 
             <header className={styles.worksTitle}>
-                Строительно-монтажные работы
+                <span>{nameWorks}</span>
             </header>
 
             <nav className={styles.nav}>
                 <Navbar
-                    name={projectNames}
+                    projectNames={projectNames}
+                    setNameWorks={setNameWorks}
                 />
             </nav>
             <div className={styles.table}>

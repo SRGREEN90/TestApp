@@ -1,9 +1,6 @@
 import {createAsyncThunk, createSlice, PayloadAction} from "@reduxjs/toolkit";
 import {createRowInEntityModelType, getTreeRowsParamsType, tableItemsApi} from "../dal/api/api";
 
-//export type RequestStatusType = 'idle' | 'loading' | 'succeeded' | 'failed'
-
-
 
 
 export const getTreeRowsTC = createAsyncThunk('itemsReducer/addItemsTC', async (eID: number,{
@@ -27,7 +24,9 @@ export const createRowInEntityTC = createAsyncThunk('itemsReducer/addItemsTC', a
         const response = await tableItemsApi.createRowInEntity(param.id, param.model)
 
         if (response.status === 200) {
+            getTreeRowsTC(param.id)
             return response.data
+
         } else {
             return rejectWithValue(null)
         }
@@ -48,7 +47,7 @@ const slice = createSlice({
             return state
         });
         // builder.addCase(createRowInEntityTC.fulfilled, (state, action) => {
-        //    // state = action
+        //     state = action
         // });
     }
 });
