@@ -14,26 +14,23 @@ type NameProjectPropsType = {
 
 export default function Navbar({projectNames, setNameWorks}: NameProjectPropsType) {
     const dispatch = useDispatch<ThunkDispatch<AppRootStateType, unknown, any>>();
-
     const [filter, setFilter] = useState(false)
 
-    useEffect(()=>{
-        dispatch(createRowInEntityTC({id: eID, model: {
-                equipmentCosts: 10,
-                estimatedProfit: 10,
-                machineOperatorSalary: 10,
-                mainCosts: 10,
-                materials: 10,
-                mimExploitation: 10,
-                overheads: 10,
-                parentId: null,
-                rowName: "string",
-                salary: 30,
-                supportCosts: 40
-            }}))
-    },[dispatch])
-
-
+    // useEffect(()=>{
+    //     dispatch(createRowInEntityTC({id: eID, model: {
+    //             equipmentCosts: 10,
+    //             estimatedProfit: 10,
+    //             machineOperatorSalary: 10,
+    //             mainCosts: 10,
+    //             materials: 10,
+    //             mimExploitation: 10,
+    //             overheads: 10,
+    //             parentId: null,
+    //             rowName: "string",
+    //             salary: 30,
+    //             supportCosts: 40
+    //         }}))
+    // },[dispatch])
 
    const mainClassName = filter ? styles.active : styles.title
 
@@ -48,7 +45,6 @@ export default function Navbar({projectNames, setNameWorks}: NameProjectPropsTyp
             setNameWorks('Материально-техническое обеспечение')
         } else if (name === projectNames[4]) {
             setNameWorks('Строительно-монтажные работы')
-            setFilter(true)
         } else if (name === projectNames[5]) {
             setNameWorks('График')
         } else if (name === projectNames[6]) {
@@ -74,16 +70,16 @@ export default function Navbar({projectNames, setNameWorks}: NameProjectPropsTyp
 
     return <div className={styles.names}>
         {projectNames.map(name =>
-            <div className={styles.namesStyles}>
+            <div  className={styles.namesStyles}>
                 <div className={styles.img}>
                     <img style={{width: '16px', height: '16px'}} src={icon} alt=""/>
                 </div>
-                <div
+                <span
                     onClick={(e) => navHandler(name)}
                     className={mainClassName}
                 >
                     {name}
-                </div>
+                </span>
             </div>
         )}
     </div>

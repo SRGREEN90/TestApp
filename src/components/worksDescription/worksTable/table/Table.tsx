@@ -10,12 +10,15 @@ type TablePropsType = {
 export default function ({items}: TablePropsType){
     return (
         <div className={styles.table}>
-            <span>{items.child}</span>
-            <span>{items.rowName}</span>
-            <span>{items.salary}</span>
-            <span>{items.equipmentCosts}</span>
-            <span>{items.overheads}</span>
-            <span>{items.estimatedProfit}</span>
+            <div className={styles.item}>
+                <div>{items.child}</div>
+                <div>{items.rowName}</div>
+                <div>{items.salary}</div>
+                <div>{items.equipmentCosts}</div>
+                <div>{items.overheads}</div>
+                <div>{items.estimatedProfit}</div>
+            </div>
+
         </div>
     )
 }

@@ -9,8 +9,9 @@ import {getTreeRowsParamsType} from "../../../main/dal/api/api";
 export default function WorksTable() {
 
     const tableItems = useSelector<AppRootStateType, getTreeRowsParamsType[]>(state => state.items)
+    console.log('tableItems -',tableItems)
     return (
-        <div className={styles.table}>
+        <div className={styles.header}>
             <div className={styles.item}>
                 <div>
                     Уровень

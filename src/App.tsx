@@ -33,11 +33,13 @@ export default function App() {
     ]
     const [nameWorks, setNameWorks] = useState('')
 
+
     //const state = useSelector<AppRootStateType>(state => state.items)
 
     useEffect(() => {
         dispatch(getTreeRowsTC(eID))
     }, [dispatch])
+
 
 
 
@@ -60,9 +62,11 @@ export default function App() {
                         Аббревиатура
                     </div>
                 </div>
+
                 <div className={styles.arrow}>
                     <img src={arrow} alt="arrow"/>
                 </div>
+
             </header>
 
             <header className={styles.worksTitle}>
