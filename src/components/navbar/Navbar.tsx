@@ -18,21 +18,21 @@ export default function Navbar({projectNames, setNameWorks}: NameProjectPropsTyp
     const dispatch = useDispatch<ThunkDispatch<AppRootStateType, unknown, any>>();
     const [filter, setFilter] = useState(false)
 
-    useEffect(()=>{
-        dispatch(createRowInEntityTC({id: eID, model: {
-                equipmentCosts: 20,
-                estimatedProfit: 30,
-                machineOperatorSalary: 40,
-                mainCosts: 50,
-                materials: 60,
-                mimExploitation: 70,
-                overheads: 80,
-                parentId: null,
-                rowName: "Южная строительная площадка",
-                salary: 90,
-                supportCosts: 100
-            }}))
-    },[dispatch])
+    // useEffect(()=>{
+    //     dispatch(createRowInEntityTC({id: eID, model: {
+    //             equipmentCosts: 20,
+    //             estimatedProfit: 30,
+    //             machineOperatorSalary: 40,
+    //             mainCosts: 50,
+    //             materials: 60,
+    //             mimExploitation: 70,
+    //             overheads: 80,
+    //             parentId: null,
+    //             rowName: "Южная строительная площадка",
+    //             salary: 90,
+    //             supportCosts: 100
+    //         }}))
+    // },[dispatch])
 
    const mainClassName = filter ? styles.active : styles.title
 
