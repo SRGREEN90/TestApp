@@ -8,20 +8,21 @@ type TablePropsType = {
     items: getTreeRowsParamsType
 }
 export default function ({items}: TablePropsType){
+    console.log('items-', items)
     return (
         <div className={styles.table}>
             <div className={styles.item}>
-                <div>
+                <span>
                     <img
                         style={{width: '19.02px', height: '15.43px'}}
                         src={folder} alt="folder"
                     />
-                </div>
-                <div>{items.rowName}</div>
-                <div>{items.salary}</div>
-                <div>{items.equipmentCosts}</div>
-                <div>{items.overheads}</div>
-                <div>{items.estimatedProfit}</div>
+                </span>
+                <div>rowName{items.rowName}</div>
+                <div>salary{items.salary}</div>
+                <div>equipmentCosts{items.equipmentCosts}</div>
+                <div>overheads{items.overheads}</div>
+                <div>estimatedProfit{items.estimatedProfit}</div>
             </div>
 
         </div>
