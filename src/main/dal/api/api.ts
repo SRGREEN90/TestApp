@@ -26,7 +26,7 @@ export type getTreeRowsParamsType = {
     materials: number,
     mimExploitation: number,
     overheads: number,
-    rowName: "string",
+    rowName: string,
     salary: number,
     supportCosts: number,
     total: number

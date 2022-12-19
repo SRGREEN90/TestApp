@@ -6,6 +6,8 @@ import {useDispatch} from "react-redux";
 import {ThunkDispatch} from "@reduxjs/toolkit";
 import {eID} from "../../App";
 import {createRowInEntityTC} from "../../main/bll/items-reducer";
+import {createRowInEntityModelType, instance, tableItemsApi} from "../../main/dal/api/api";
+import axios, {AxiosResponse} from "axios";
 
 type NameProjectPropsType = {
     projectNames: string[]
@@ -16,21 +18,21 @@ export default function Navbar({projectNames, setNameWorks}: NameProjectPropsTyp
     const dispatch = useDispatch<ThunkDispatch<AppRootStateType, unknown, any>>();
     const [filter, setFilter] = useState(false)
 
-    // useEffect(()=>{
-    //     dispatch(createRowInEntityTC({id: eID, model: {
-    //             equipmentCosts: 10,
-    //             estimatedProfit: 10,
-    //             machineOperatorSalary: 10,
-    //             mainCosts: 10,
-    //             materials: 10,
-    //             mimExploitation: 10,
-    //             overheads: 10,
-    //             parentId: null,
-    //             rowName: "string",
-    //             salary: 30,
-    //             supportCosts: 40
-    //         }}))
-    // },[dispatch])
+    useEffect(()=>{
+        dispatch(createRowInEntityTC({id: eID, model: {
+                equipmentCosts: 20,
+                estimatedProfit: 30,
+                machineOperatorSalary: 40,
+                mainCosts: 50,
+                materials: 60,
+                mimExploitation: 70,
+                overheads: 80,
+                parentId: null,
+                rowName: "Южная строительная площадка",
+                salary: 90,
+                supportCosts: 100
+            }}))
+    },[dispatch])
 
    const mainClassName = filter ? styles.active : styles.title
 
