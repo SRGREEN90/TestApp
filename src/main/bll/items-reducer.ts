@@ -1,12 +1,13 @@
 import {createAsyncThunk, createSlice, PayloadAction} from "@reduxjs/toolkit";
-import {createRowInEntityModelType, getTreeRowsParamsType, tableItemsApi} from "../dal/api/api";
+import {
+    createRowInEntityRequestType,
+    getTreeRowsParamsType,
+    tableItemsApi
+} from "../dal/api/api";
 
 
 
-export const getTreeRowsTC = createAsyncThunk('itemsReducer/addItemsTC', async (eID: number,{
-    dispatch,
-    rejectWithValue
-})=> {
+export const getTreeRowsTC = createAsyncThunk('itemsReducer/addItemsTC', async (eID: number,{dispatch, rejectWithValue})=> {
     try {
         const response = await tableItemsApi.getTreeRows(eID)
         if (response.status === 200) {
@@ -19,14 +20,28 @@ export const getTreeRowsTC = createAsyncThunk('itemsReducer/addItemsTC', async (
     }
 })
 
-export const createRowInEntityTC = createAsyncThunk('itemsReducer/addItemsTC', async (param:{id: number, model: createRowInEntityModelType},{dispatch, rejectWithValue}) => {
+// export const createRowInEntityTC = createAsyncThunk('itemsReducer/addItemsTC', async (param:{id: number, model: createRowInEntityRequestType},{dispatch, rejectWithValue}) => {
+//     try {
+//         const response = await tableItemsApi.createRowInEntity(param.id, param.model)
+//
+//         if (response.status === 200) {
+//             getTreeRowsTC(param.id)
+//             return response.data
+//
+//         } else {
+//             return rejectWithValue(null)
+//         }
+//     } catch (error) {
+//         return rejectWithValue(null)
+//     }
+// })
+
+export const deleteRowTC = createAsyncThunk('itemsReducer/deleteRowTC', async (params: {id: number, rowId: number},{dispatch, rejectWithValue}) => {
     try {
-        const response = await tableItemsApi.createRowInEntity(param.id, param.model)
+        const response = await tableItemsApi.deleteRow(params.id, params.rowId)
 
         if (response.status === 200) {
-            getTreeRowsTC(param.id)
             return response.data
-
         } else {
             return rejectWithValue(null)
         }
@@ -47,7 +62,8 @@ const slice = createSlice({
             return state
         });
         // builder.addCase(createRowInEntityTC.fulfilled, (state, action) => {
-        //     state = action
+        //     state.push(action.payload as any)
+        //     return state
         // });
     }
 });

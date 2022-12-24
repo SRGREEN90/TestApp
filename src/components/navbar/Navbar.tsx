@@ -5,9 +5,9 @@ import {AppRootStateType, useAppDispatch} from "../../main/bll/store";
 import {useDispatch} from "react-redux";
 import {ThunkDispatch} from "@reduxjs/toolkit";
 import {eID} from "../../App";
-import {createRowInEntityTC} from "../../main/bll/items-reducer";
-import {createRowInEntityModelType, instance, tableItemsApi} from "../../main/dal/api/api";
-import axios, {AxiosResponse} from "axios";
+import {deleteRowTC} from "../../main/bll/items-reducer";
+import { createRowInEntityTC } from "../../main/bll/create-row-reducer";
+
 
 type NameProjectPropsType = {
     projectNames: string[]
@@ -17,6 +17,9 @@ type NameProjectPropsType = {
 export default function Navbar({projectNames, setNameWorks}: NameProjectPropsType) {
     const dispatch = useDispatch<ThunkDispatch<AppRootStateType, unknown, any>>();
     const [filter, setFilter] = useState(false)
+
+
+
 
     // useEffect(()=>{
     //     dispatch(createRowInEntityTC({id: eID, model: {
@@ -28,10 +31,15 @@ export default function Navbar({projectNames, setNameWorks}: NameProjectPropsTyp
     //             mimExploitation: 70,
     //             overheads: 80,
     //             parentId: null,
-    //             rowName: "Южная строительная площадка",
+    //             rowName: "new data",
     //             salary: 90,
     //             supportCosts: 100
     //         }}))
+    //
+    // },[dispatch])
+
+    // useEffect(()=>{
+    //     dispatch(deleteRowTC({id: eID, rowId: 24560}))
     // },[dispatch])
 
    const mainClassName = filter ? styles.active : styles.title

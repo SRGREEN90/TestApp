@@ -1,15 +1,21 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import {useSelector} from 'react-redux/es/hooks/useSelector';
 import Table from './table/Table';
 import styles from "./WorksTable.module.scss"
 import {AppRootStateType} from "../../../main/bll/store";
-import {getTreeRowsParamsType} from "../../../main/dal/api/api";
+import {CreateRowInEntityResponseType, getTreeRowsParamsType} from "../../../main/dal/api/api";
 
 
 export default function WorksTable() {
 
-    const tableItems = useSelector<AppRootStateType, getTreeRowsParamsType[]>(state => state.items)
-    console.log('tableItems -',tableItems)
+    const rowList = useSelector<AppRootStateType, getTreeRowsParamsType[]>(state => state.items)
+
+   // const newRows = useSelector<AppRootStateType, CreateRowInEntityResponseType>(state => state.newRows)
+
+    // useEffect(()=>{
+    //     console.log(newRows)
+    // },[newRows])
+
     return (
         <div className={styles.header}>
             <div className={styles.item}>
@@ -33,12 +39,13 @@ export default function WorksTable() {
                 </div>
             </div>
             {
-                tableItems.length
-                    ? tableItems.map(items =>
-                        <Table
-                            key={items.id}
-                            items={items}
-                        />
+                rowList.length > 0
+                    ? rowList.map((rows) => {
+                            return <Table
+                                key={rows.id}
+                                rows={rows}
+                            />
+                        }
                     )
                     : <div style={{padding: '100px 250px'}}>Ничего не найдено!!!</div>
             }

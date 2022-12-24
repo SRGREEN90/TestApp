@@ -3,9 +3,11 @@ import thunkMiddleware from 'redux-thunk'
 import {configureStore} from "@reduxjs/toolkit";
 import {useDispatch} from "react-redux";
 import { itemsReducer } from './items-reducer';
+import { createRowReducer } from './create-row-reducer';
 
 const rootReducer = combineReducers({
-    items: itemsReducer
+    items: itemsReducer,
+    newRows: createRowReducer
 })
 export const store = configureStore({
     reducer: rootReducer,

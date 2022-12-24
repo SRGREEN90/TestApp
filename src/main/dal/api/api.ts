@@ -10,11 +10,11 @@ export const tableItemsApi = {
     getTreeRows: (eID: number) => {
         return instance.get<getTreeRowsParamsType[], AxiosResponse<ResponseType>>(`v1/outlay-rows/entity/${eID}/row/list`);
     },
-    createRowInEntity: (eID: number, model: createRowInEntityModelType) => {
-        return instance.post<createRowInEntityModelType, AxiosResponse<ResponseType>>(`v1/outlay-rows/entity/${eID}/row/create`, model);
+    createRowInEntity: (eID: number, model: createRowInEntityRequestType) => {
+        return instance.post<CreateRowInEntityResponseType, AxiosResponse<ResponseType>>(`v1/outlay-rows/entity/${eID}/row/create`, model);
     },
     deleteRow: (eID: number, rowID: number) => {
-        return instance.delete<deleteRowType, AxiosResponse<ResponseType>>(`/v1/outlay-rows/entity/${eID}/row/{rID}/delete`, {params:{rowID}});
+        return instance.delete<deleteRowType, AxiosResponse<ResponseType>>(`/v1/outlay-rows/entity/${eID}/row/${rowID}/delete`);
     },
 }
 
@@ -33,9 +33,62 @@ export type getTreeRowsParamsType = {
     supportCosts: number,
     total: number
 }
-export type createRowInEntityModelType = Omit<getTreeRowsParamsType, 'child' | 'id' | 'total'> & {
+// export type createRowInEntityRequestType = Omit<getTreeRowsParamsType, 'child' | 'id' | 'total'> & {
+//     parentId: number | null,
+// }
+
+export type createRowInEntityRequestType = {
+    equipmentCosts: number,
+    estimatedProfit: number,
+    machineOperatorSalary: number,
+    mainCosts: number,
+    materials: number,
+    mimExploitation: number,
+    overheads: number,
     parentId: number | null,
+    rowName: string,
+    salary: number,
+    supportCosts: number,
 }
+
+
+
+export type CreateRowInEntityResponseType = {
+    changed: ChangedRowsType[],
+    current: CurrentRowsType
+}
+
+export type ChangedRowsType = {
+    equipmentCosts: number,
+    estimatedProfit: number,
+    id: number,
+    machineOperatorSalary: number,
+    mainCosts: number,
+    materials: number,
+    mimExploitation: number,
+    overheads: number,
+    rowName: string,
+    salary: number,
+    supportCosts: number,
+    total: number
+}
+export type CurrentRowsType = {
+    equipmentCosts: number,
+    estimatedProfit: number,
+    id: number,
+    machineOperatorSalary: number,
+    mainCosts: number,
+    materials: number,
+    mimExploitation: number,
+    overheads: number,
+    rowName: string,
+    salary: number,
+    supportCosts: number,
+    total: number
+}
+
+
+
 export type deleteRowType = {
     "changed": [
         {

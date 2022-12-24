@@ -1,14 +1,29 @@
 import React from 'react'
-import {getTreeRowsParamsType} from "../../../../main/dal/api/api";
 import styles from './Table.module.scss'
 import folder from "../../../assets/folder.png";
+import {getTreeRowsParamsType} from "../../../../main/dal/api/api";
 
+
+type RowsPropsType = {
+    equipmentCosts: number,
+    estimatedProfit: number,
+    id: number,
+    machineOperatorSalary: number,
+    mainCosts: number,
+    materials: number,
+    mimExploitation: number,
+    overheads: number,
+    rowName: string,
+    salary: number,
+    supportCosts: number,
+    total: number
+}
 
 type TablePropsType = {
-    items: getTreeRowsParamsType
+    rows: getTreeRowsParamsType
 }
-export default function ({items}: TablePropsType){
-    console.log('items-', items)
+export default function ({rows}: TablePropsType){
+    console.log('rows ---', rows )
     return (
         <div className={styles.table}>
             <div className={styles.item}>
@@ -18,11 +33,11 @@ export default function ({items}: TablePropsType){
                         src={folder} alt="folder"
                     />
                 </span>
-                <div>rowName{items.rowName}</div>
-                <div>salary{items.salary}</div>
-                <div>equipmentCosts{items.equipmentCosts}</div>
-                <div>overheads{items.overheads}</div>
-                <div>estimatedProfit{items.estimatedProfit}</div>
+                <div>{rows.rowName}</div>
+                <div>{rows.salary}</div>
+                <div>{rows.equipmentCosts}</div>
+                <div>{rows.overheads}</div>
+                <div>{rows.estimatedProfit}</div>
             </div>
 
         </div>
