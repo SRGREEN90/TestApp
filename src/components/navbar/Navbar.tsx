@@ -5,7 +5,7 @@ import {AppRootStateType, useAppDispatch} from "../../main/bll/store";
 import {useDispatch} from "react-redux";
 import {ThunkDispatch} from "@reduxjs/toolkit";
 import {eID} from "../../App";
-import {deleteRowTC} from "../../main/bll/items-reducer";
+import {deleteRowTC, getTreeRowsTC} from "../../main/bll/items-reducer";
 import { createRowInEntityTC } from "../../main/bll/create-row-reducer";
 
 
@@ -17,8 +17,6 @@ type NameProjectPropsType = {
 export default function Navbar({projectNames, setNameWorks}: NameProjectPropsType) {
     const dispatch = useDispatch<ThunkDispatch<AppRootStateType, unknown, any>>();
     const [filter, setFilter] = useState(false)
-
-
 
 
     // useEffect(()=>{
@@ -39,7 +37,7 @@ export default function Navbar({projectNames, setNameWorks}: NameProjectPropsTyp
     // },[dispatch])
 
     // useEffect(()=>{
-    //     dispatch(deleteRowTC({id: eID, rowId: 24560}))
+    //     dispatch(deleteRowTC({id: eID, rowId: 24600}))
     // },[dispatch])
 
    const mainClassName = filter ? styles.active : styles.title

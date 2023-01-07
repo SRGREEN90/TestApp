@@ -1,4 +1,4 @@
-import React, {useEffect} from 'react';
+import React, {useEffect, useState} from 'react';
 import {useSelector} from 'react-redux/es/hooks/useSelector';
 import Table from './table/Table';
 import styles from "./WorksTable.module.scss"
@@ -8,13 +8,9 @@ import {CreateRowInEntityResponseType, getTreeRowsParamsType} from "../../../mai
 
 export default function WorksTable() {
 
-    const rowList = useSelector<AppRootStateType, getTreeRowsParamsType[]>(state => state.items)
+    const rowLists = useSelector<AppRootStateType, CreateRowInEntityResponseType>(state => state.newRows)
 
-   // const newRows = useSelector<AppRootStateType, CreateRowInEntityResponseType>(state => state.newRows)
 
-    // useEffect(()=>{
-    //     console.log(newRows)
-    // },[newRows])
 
     return (
         <div className={styles.header}>
@@ -39,8 +35,8 @@ export default function WorksTable() {
                 </div>
             </div>
             {
-                rowList.length > 0
-                    ? rowList.map((rows) => {
+                rowLists.changed.length > 0
+                    ? rowLists.changed.map((rows) => {
                             return <Table
                                 key={rows.id}
                                 rows={rows}

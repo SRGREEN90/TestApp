@@ -63,8 +63,6 @@ const slice = createSlice({
     reducers: {},
     extraReducers: (builder) => {
         builder.addCase(createRowInEntityTC.fulfilled, (state, action) => {
-      //    state.changed = action.payload
-
         });
     }
 });
