@@ -1,11 +1,10 @@
 import {createAsyncThunk, createSlice, PayloadAction} from "@reduxjs/toolkit";
 import {
-    ChangedRowsType,
     createRowInEntityRequestType, CreateRowInEntityResponseType,
     tableItemsApi
 } from "../dal/api/api";
 import {getTreeRowsTC} from "./items-reducer";
-import {onOffline} from "@reduxjs/toolkit/dist/query/core/setupListeners";
+
 
 
 export const createRowInEntityTC = createAsyncThunk('createRowReducer/createRowInEntityTC', async (param: { id: number, model: createRowInEntityRequestType }, {
@@ -70,6 +69,6 @@ const slice = createSlice({
     }
 });
 export const createRowReducer = slice.reducer
-// export const {setAppStatus} = slice.actions
+
 
 

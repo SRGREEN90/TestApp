@@ -1,9 +1,9 @@
-import React, {useEffect, useState} from 'react';
+import React from 'react';
 import {useSelector} from 'react-redux/es/hooks/useSelector';
 import Table from './table/Table';
 import styles from "./WorksTable.module.scss"
 import {AppRootStateType} from "../../../main/bll/store";
-import {CreateRowInEntityResponseType, getTreeRowsParamsType} from "../../../main/dal/api/api";
+import {getTreeRowsParamsType} from "../../../main/dal/api/api";
 
 
 export default function WorksTable() {
@@ -33,11 +33,9 @@ export default function WorksTable() {
                 </div>
             </div>
             {
-
                 state.length > 0
-
                     ? state.map((rows) => {
-                        console.log(rows)
+                        console.log('rows -', rows)
                             return <Table
                                 key={rows.id}
                                 rows={rows}

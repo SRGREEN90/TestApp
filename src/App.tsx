@@ -9,7 +9,6 @@ import { useDispatch } from 'react-redux/es/hooks/useDispatch';
 import {getTreeRowsTC} from "./main/bll/items-reducer";
 import {ThunkDispatch} from "@reduxjs/toolkit";
 import {AppRootStateType} from "./main/bll/store";
-import { useSelector } from 'react-redux/es/hooks/useSelector';
 export const eID = 31463
 
 export default function App() {
@@ -36,8 +35,6 @@ export default function App() {
     useEffect(() => {
         dispatch(getTreeRowsTC(eID))
     }, [dispatch])
-
-
 
 
     return (

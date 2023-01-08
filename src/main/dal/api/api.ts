@@ -33,9 +33,6 @@ export type getTreeRowsParamsType = {
     supportCosts: number,
     total: number
 }
-// export type createRowInEntityRequestType = Omit<getTreeRowsParamsType, 'child' | 'id' | 'total'> & {
-//     parentId: number | null,
-// }
 
 export type createRowInEntityRequestType = {
     equipmentCosts: number,
