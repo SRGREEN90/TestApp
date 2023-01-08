@@ -7,6 +7,7 @@ import {ThunkDispatch} from "@reduxjs/toolkit";
 import {eID} from "../../App";
 import {deleteRowTC, getTreeRowsTC} from "../../main/bll/items-reducer";
 import { createRowInEntityTC } from "../../main/bll/create-row-reducer";
+import {useSelector} from "react-redux/es/hooks/useSelector";
 
 
 type NameProjectPropsType = {
@@ -19,26 +20,30 @@ export default function Navbar({projectNames, setNameWorks}: NameProjectPropsTyp
     const [filter, setFilter] = useState(false)
 
 
+
     // useEffect(()=>{
     //     dispatch(createRowInEntityTC({id: eID, model: {
-    //             equipmentCosts: 20,
-    //             estimatedProfit: 30,
-    //             machineOperatorSalary: 40,
-    //             mainCosts: 50,
-    //             materials: 60,
-    //             mimExploitation: 70,
-    //             overheads: 80,
+    //             equipmentCosts: 100,
+    //             estimatedProfit: 100,
+    //             machineOperatorSalary: 100,
+    //             mainCosts: 100,
+    //             materials: 100,
+    //             mimExploitation: 100,
+    //             overheads: 100,
     //             parentId: null,
-    //             rowName: "new data",
-    //             salary: 90,
+    //             rowName: "Super Project",
+    //             salary: 100,
     //             supportCosts: 100
     //         }}))
     //
     // },[dispatch])
 
-    // useEffect(()=>{
-    //     dispatch(deleteRowTC({id: eID, rowId: 24600}))
-    // },[dispatch])
+
+
+
+    useEffect(()=>{
+        dispatch(deleteRowTC({id: eID, rowId: 24798}))
+    },[dispatch])
 
    const mainClassName = filter ? styles.active : styles.title
 

@@ -3,16 +3,20 @@
   max-width: 1920px;
   background: #202124;
   color: #A1A1AA;
-  min-height: 100px;
+  min-height: 50px;
   padding-top: 20px;
-  border-top: 1px solid #414144;
+  border-bottom: 1px solid #414144;
 
   .item {
     display: grid;
     grid-template-columns: 1.5fr 4.5fr 1.5fr 1.5fr 1.5fr 1.5fr;
     grid-gap: 0 30px;
     min-height: 50px;
-    border-bottom: 1px solid #414144;
+    color: #FFFFFF;
+    .rows{
+      display: flex;
+      flex-direction: column;
+    }
 
   }
 

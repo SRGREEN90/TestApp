@@ -58,8 +58,7 @@ const slice = createSlice({
     reducers: {},
     extraReducers: (builder) => {
         builder.addCase(getTreeRowsTC.fulfilled, (state, action) => {
-            state.push(action.payload as any)
-            return state
+            return action.payload as any
         });
         // builder.addCase(createRowInEntityTC.fulfilled, (state, action) => {
         //     state.push(action.payload as any)

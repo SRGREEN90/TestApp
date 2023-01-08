@@ -31,11 +31,8 @@ export default function App() {
         "Поручения",
         "Контрагенты"
     ]
-    const [nameWorks, setNameWorks] = useState('')
+    const [nameWorks, setNameWorks] = useState('Выбери название проекта')
 
-
-    const state = useSelector<AppRootStateType>(state => state.items)
-    console.log('state -', state)
     useEffect(() => {
         dispatch(getTreeRowsTC(eID))
     }, [dispatch])

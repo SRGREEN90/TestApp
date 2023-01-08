@@ -1,7 +1,6 @@
 import React, {ChangeEvent, useState} from 'react'
 import styles from './Table.module.scss'
 import doc from "../../../assets/doc.png";
-import {getTreeRowsParamsType} from "../../../../main/dal/api/api";
 
 
 type RowsPropsType = {
@@ -32,6 +31,7 @@ export default function ({rows}: TablePropsType) {
     const [overheads, setOverheads] = useState<string>('')
     const [estimatedProfit, setEstimatedProfit] = useState<string>('')
 
+
     const onDoubleClickHandler = () => {
         setEditMode(true)
     }
@@ -54,12 +54,15 @@ export default function ({rows}: TablePropsType) {
     const estimatedProfitHandler = (e: ChangeEvent<HTMLInputElement>) => {
         setEstimatedProfit(e.currentTarget.value)
     }
+    console.log(rows)
 
-
-    let content = null
-    if (editMode) {
-        content = (
-            <>
+    return <div
+        className={styles.table}
+        onBlur={onBlurHandler}
+        onDoubleClick={onDoubleClickHandler}
+    >
+        {editMode ?
+            (
                 <div className={styles.item}>
                 <span>
                     <img
@@ -67,17 +70,15 @@ export default function ({rows}: TablePropsType) {
                         src={doc} alt="folder"
                     />
                 </span>
-                    <div><input onChange={rowNameHandler} value={rowName}/></div>
-                    <div><input onChange={salaryHandler} value={salary}/></div>
-                    <div><input onChange={equipmentCostsHandler} value={equipmentCosts}/></div>
-                    <div><input onChange={overheadsHandler} value={overheads}/></div>
-                    <div><input onChange={estimatedProfitHandler} value={estimatedProfit}/></div>
-                </div>
-            </>
-        )
-    } else {
-        content = (
-            <>
+
+                        <div><input onChange={rowNameHandler} value={rowName}/></div>
+                        <div><input onChange={salaryHandler} value={salary}/></div>
+                        <div><input onChange={equipmentCostsHandler} value={equipmentCosts}/></div>
+                        <div><input onChange={overheadsHandler} value={overheads}/></div>
+                        <div><input onChange={estimatedProfitHandler} value={estimatedProfit}/></div>
+
+                </div>)
+            : (<>
                 <div className={styles.item}>
                 <span>
                     <img
@@ -85,23 +86,15 @@ export default function ({rows}: TablePropsType) {
                         src={doc} alt="folder"
                     />
                 </span>
-                    <div>{rows.rowName}</div>
-                    <div>{rows.salary}</div>
-                    <div>{rows.equipmentCosts}</div>
-                    <div>{rows.overheads}</div>
-                    <div>{rows.estimatedProfit}</div>
-                </div>
-            </>
-        )
-    }
-    return (
 
-        <div
-            className={styles.table}
-            onBlur={onBlurHandler}
-            onDoubleClick={onDoubleClickHandler}
-        >
-            {content}
-        </div>
-    )
+                        <div>{rows.rowName}</div>
+                        <div>{rows.salary}</div>
+                        <div>{rows.equipmentCosts}</div>
+                        <div>{rows.overheads}</div>
+                        <div>{rows.estimatedProfit}</div>
+
+                </div>
+            </>)}
+    </div>
 }
+

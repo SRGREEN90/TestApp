@@ -8,9 +8,7 @@ import {CreateRowInEntityResponseType, getTreeRowsParamsType} from "../../../mai
 
 export default function WorksTable() {
 
-    const rowLists = useSelector<AppRootStateType, CreateRowInEntityResponseType>(state => state.newRows)
-
-
+   const state = useSelector<AppRootStateType, getTreeRowsParamsType[]>(state => state.items)
 
     return (
         <div className={styles.header}>
@@ -35,8 +33,11 @@ export default function WorksTable() {
                 </div>
             </div>
             {
-                rowLists.changed.length > 0
-                    ? rowLists.changed.map((rows) => {
+
+                state.length > 0
+
+                    ? state.map((rows) => {
+                        console.log(rows)
                             return <Table
                                 key={rows.id}
                                 rows={rows}

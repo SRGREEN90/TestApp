@@ -1,5 +1,6 @@
 import {createAsyncThunk, createSlice, PayloadAction} from "@reduxjs/toolkit";
 import {
+    ChangedRowsType,
     createRowInEntityRequestType, CreateRowInEntityResponseType,
     tableItemsApi
 } from "../dal/api/api";
@@ -63,6 +64,8 @@ const slice = createSlice({
     reducers: {},
     extraReducers: (builder) => {
         builder.addCase(createRowInEntityTC.fulfilled, (state, action) => {
+            state.changed.push(action.payload as any)
+            return state
         });
     }
 });
