@@ -1,5 +1,6 @@
-$primary: #27272A;
 $secondary: #202124;
+$primary: #27272A;
+$tertiary: 1px solid #414144;
 
 .size {
   display: grid;
@@ -11,12 +12,12 @@ $secondary: #202124;
   grid-template-columns: 234px 1fr;
   height: 1080px;
   background-color: $primary;
-  border: 1px solid #414144;
+  border: $tertiary;
 
   .header {
     grid-area: header;
     background-color: $primary;
-    border-bottom: 1px solid #414144;
+    border-bottom: $tertiary;
 
     .icons {
       display: flex;
@@ -36,7 +37,7 @@ $secondary: #202124;
     display: flex;
     flex-direction: row;
     justify-content: space-between;
-    border-right: 1px solid #414144;
+    border-right: $tertiary;
     padding-left: 20px;
 
     .projectTitle {
@@ -67,7 +68,6 @@ $secondary: #202124;
       }
     }
   }
-
   .worksTitle {
     grid-area: worksTitle;
     color: #FFFFFF;
@@ -75,18 +75,20 @@ $secondary: #202124;
     text-align: left;
     align-items: center;
     padding-left: 20px;
+    max-width: 300px;
+    border-right: $tertiary;
   }
 
   .nav {
     grid-area: nav;
     background-color: $primary;
-    border: 1px solid #414144;
+    border: $tertiary;
   }
 
   .table {
     grid-area: table;
     background-color: $secondary;
-    border-top: 1px solid #414144;
+    border-top: $tertiary;
   }
 }
 

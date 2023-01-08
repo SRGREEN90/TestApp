@@ -30,7 +30,8 @@ export default function App() {
         "Поручения",
         "Контрагенты"
     ]
-    const [nameWorks, setNameWorks] = useState('Выбери название проекта')
+    const [nameWorks, setNameWorks] = useState<string>('Выбери название проекта')
+
 
     useEffect(() => {
         dispatch(getTreeRowsTC(eID))
@@ -71,10 +72,14 @@ export default function App() {
                 <Navbar
                     projectNames={projectNames}
                     setNameWorks={setNameWorks}
+
                 />
             </nav>
             <div className={styles.table}>
-                <WorksTable />
+                {
+                    nameWorks === 'Строительно-монтажные работы' ? <WorksTable /> : null
+                }
+
             </div>
         </div>
     );

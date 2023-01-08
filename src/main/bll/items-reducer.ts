@@ -3,6 +3,7 @@ import {
     getTreeRowsParamsType,
     tableItemsApi
 } from "../dal/api/api";
+import {eID} from "../../App";
 
 
 
@@ -24,6 +25,7 @@ export const deleteRowTC = createAsyncThunk('itemsReducer/deleteRowTC', async (p
         const response = await tableItemsApi.deleteRow(params.id, params.rowId)
 
         if (response.status === 200) {
+            getTreeRowsTC(eID)
             return response.data
         } else {
             return rejectWithValue(null)

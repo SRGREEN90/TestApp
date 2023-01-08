@@ -17,10 +17,6 @@ export default function Navbar({projectNames, setNameWorks}: NameProjectPropsTyp
     const [filter, setFilter] = useState(false)
 
 
-    // useEffect(()=>{
-    //     dispatch(deleteRowTC({id: eID, rowId: 24802}))
-    // },[dispatch])
-
    const mainClassName = filter ? styles.active : styles.title
 
     function navHandler(name: string) {
@@ -34,6 +30,7 @@ export default function Navbar({projectNames, setNameWorks}: NameProjectPropsTyp
             setNameWorks('Материально-техническое обеспечение')
         } else if (name === projectNames[4]) {
             setNameWorks('Строительно-монтажные работы')
+
         } else if (name === projectNames[5]) {
             setNameWorks('График')
         } else if (name === projectNames[6]) {

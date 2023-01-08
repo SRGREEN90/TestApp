@@ -1,4 +1,4 @@
-import React, {ChangeEvent, useState} from 'react'
+import React, {ChangeEvent, useEffect, useState} from 'react'
 import styles from './Table.module.scss'
 import documentIcon from "../../../assets/doc.png";
 import garbage from "../../../assets/garbage.png";
@@ -34,6 +34,7 @@ export default function ({rows}: TablePropsType) {
 
     const [editMode, setEditMode] = useState<boolean>(false)
 
+
     const [rowName, setRowName] = useState<string>('')
     const [salary, setSalary] = useState<number>(0)
     const [equipmentCosts, setEquipmentCosts] = useState<number>(0)
@@ -56,22 +57,6 @@ export default function ({rows}: TablePropsType) {
     const onBlurHandler = () => {
         setEditMode(false)
     }
-    // useEffect(()=>{
-    //     dispatch(createRowInEntityTC({id: eID, model: {
-    //             equipmentCosts: 100,
-    //             estimatedProfit: 100,
-    //             machineOperatorSalary: 100,
-    //             mainCosts: 100,
-    //             materials: 100,
-    //             mimExploitation: 100,
-    //             overheads: 100,
-    //             parentId: null,
-    //             rowName: "Super Project",
-    //             salary: 100,
-    //             supportCosts: 100
-    //         }}))
-    //
-    // },[dispatch])
 
 
     const rowNameHandler = (e: ChangeEvent<HTMLInputElement>) => {
@@ -96,18 +81,19 @@ export default function ({rows}: TablePropsType) {
     }
 
     const createRowHandler = () => {
-        dispatch(createRowInEntityTC({
+        dispatch(
+            createRowInEntityTC({
             id: eID, model: {
-                equipmentCosts: equipmentCosts,
-                estimatedProfit: estimatedProfit,
+                equipmentCosts: 0,
+                estimatedProfit: 0,
                 machineOperatorSalary: 0,
                 mainCosts: 0,
                 materials: 0,
                 mimExploitation: 0,
-                overheads: overheads,
+                overheads: 0,
                 parentId: null,
-                rowName: rowName,
-                salary: salary,
+                rowName: '',
+                salary: 0,
                 supportCosts: 0
             }
         }))
@@ -142,16 +128,15 @@ export default function ({rows}: TablePropsType) {
             : (
                 <>
                     <div className={styles.item}>
-                        <div className={mainClass}>
+                        <div onMouseLeave={onFocusRemoveHandler} className={mainClass}>
                             <img
                                 className={styles.doc}
                                 onClick={createRowHandler}
                                 onMouseOver={onFocusAddHandler}
-                                // onMouseLeave={onFocusRemoveHandler}
                                 src={documentIcon}
                                 alt="documentIcon"
                             />
-                            <img
+                                <img
                                 onClick={deleteRowHandler}
                                 className={styles.garbage}
                                 src={garbage}
