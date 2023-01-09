@@ -4,33 +4,18 @@ import grid from "./components/assets/grid.png";
 import backArrow from "./components/assets/backArrow.png";
 import arrow from "./components/assets/arrow.png";
 import Navbar from "./components/navbar/Navbar";
-import WorksTable from "./components/worksDescription/worksTable/WorksTable";
-import { useDispatch } from 'react-redux/es/hooks/useDispatch';
+import {useDispatch} from 'react-redux/es/hooks/useDispatch';
 import {getTreeRowsTC} from "./main/bll/items-reducer";
 import {ThunkDispatch} from "@reduxjs/toolkit";
 import {AppRootStateType} from "./main/bll/store";
+import {RoutesComponent} from "./components/routes/RoutesComponent";
+
 export const eID = 31463
 
 export default function App() {
     const dispatch = useDispatch<ThunkDispatch<AppRootStateType, unknown, any>>();
-    const projectNames = [
-        "По проекту",
-        "Объекты",
-        "РД",
-        "МТО",
-        "СМР",
-        "График",
-        "МиМ",
-        "Рабочие",
-        "Капвложения",
-        "Бюджет",
-        "Финансирование",
-        "Панорамы",
-        "Камеры",
-        "Поручения",
-        "Контрагенты"
-    ]
-    const [nameWorks, setNameWorks] = useState<string>('Выбери название проекта')
+
+    const [nameWorks, setNameWorks] = useState<string>('')
 
 
     useEffect(() => {
@@ -44,7 +29,7 @@ export default function App() {
             <header className={styles.header}>
                 <div className={styles.icons}>
                     <img style={{width: '16px', height: '16px'}} src={grid} alt=""/>
-                    <img style={{width: '18px', height: '15px', paddingLeft: '20px'}} src={backArrow} alt=""/>
+                    <img style={{width: '18px', height: '15px', paddingLeft: '20px'}} src={backArrow} alt="backArrow"/>
                     <p>Просмотр</p>
                     <p>Управление</p>
                 </div>
@@ -70,16 +55,11 @@ export default function App() {
 
             <nav className={styles.nav}>
                 <Navbar
-                    projectNames={projectNames}
                     setNameWorks={setNameWorks}
-
                 />
             </nav>
             <div className={styles.table}>
-                {
-                    nameWorks === 'Строительно-монтажные работы' ? <WorksTable /> : null
-                }
-
+                <RoutesComponent/>
             </div>
         </div>
     );

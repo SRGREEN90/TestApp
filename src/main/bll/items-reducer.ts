@@ -4,6 +4,7 @@ import {
     tableItemsApi
 } from "../dal/api/api";
 import {eID} from "../../App";
+import {createRowInEntityTC} from "./create-row-reducer";
 
 
 
@@ -25,7 +26,7 @@ export const deleteRowTC = createAsyncThunk('itemsReducer/deleteRowTC', async (p
         const response = await tableItemsApi.deleteRow(params.id, params.rowId)
 
         if (response.status === 200) {
-            getTreeRowsTC(eID)
+
             return response.data
         } else {
             return rejectWithValue(null)
@@ -44,6 +45,13 @@ const slice = createSlice({
     extraReducers: (builder) => {
         builder.addCase(getTreeRowsTC.fulfilled, (state, action) => {
             return action.payload as any
+        });
+        builder.addCase(createRowInEntityTC.fulfilled, (state, action) => {
+            state.push(action.payload as any)
+            return state
+        });
+        builder.addCase(deleteRowTC.fulfilled, (state, action) => {
+            delete state[action.payload as any]
         });
     }
 });
