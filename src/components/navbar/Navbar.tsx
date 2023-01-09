@@ -95,8 +95,11 @@ export default function Navbar({setNameWorks}: NameProjectPropsType) {
                     <img style={{width: '16px', height: '16px'}} src={icon} alt=""/>
                 </div>
 
-                <NavLink className={styles.title} onClick={(e) => setNameWorks(link.fullTitle)} to={link.path}
-                         style={({isActive}) => ({color: 'white', textDecoration: "none"})}>
+                <NavLink
+                    className={styles.title}
+                    onClick={(e) => setNameWorks(link.fullTitle)}
+                    to={link.path}
+                    style={({isActive}) => ({color: 'white', textDecoration: "none"})}>
                     {link.title}
                 </NavLink>
             </div>
